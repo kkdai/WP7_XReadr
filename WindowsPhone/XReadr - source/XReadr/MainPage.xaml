@@ -1,0 +1,60 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="XReadr.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" >
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+       <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+                <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,12,0" >
+            <ListBox Name="feedListBox" HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Top" Width="455" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="feedListBox_SelectionChanged" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel  Height="120" Width="455" Margin="0,10,0,0">
+                            <StackPanel Orientation="Horizontal" Height="80" Width="400">
+                                <Image Source="{Binding Link}" Width="80" Height="80"/>
+                                    <StackPanel Orientation="Vertical" Height="80">
+                                        <StackPanel Orientation="Horizontal" Height="40">
+                                            <TextBlock FontSize="22"  HorizontalAlignment="Left" Name="feedTitle" Text="{Binding DispTitle}" Height="40"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Height="40">
+                                            <TextBlock FontSize="22" Name="feedDetail" Text="{Binding DispDetail}" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Border BorderBrush="{StaticResource PhoneSubtleBrush}" BorderThickness="1" Height="0" HorizontalAlignment="Left" Margin="20,88,0,0" Name="border1" VerticalAlignment="Top" Width="438" />
+        </Grid>
+    </Grid>
+        <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton x:Name="Refresh" Click="Refresh_Click" IconUri="img/appbar.refresh.rest.png" Text="Refresh"/>
+<!--            <shell:ApplicationBarIconButton  IconUri="img/appbar.feature.search.rest.png" Text="Search" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+-->            
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
